@@ -1,1 +1,40 @@
-<p>products works!</p>
+<div class="productsContainer">
+
+    <div class="container">
+        <h2 class="title mb-3 text-capitalize">
+            products
+        </h2>
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of products">
+                <div class="card mb-4" [ngClass]="{'border-danger': product.AvailablePieces == 0, 
+                'border-warning': 5 >= product.AvailablePieces && product.AvailablePieces > 0}">
+                    <span class="badge productId" [ngClass]="{'badge-danger': product.AvailablePieces == 0, 
+                    'badge-warning': 5 >= product.AvailablePieces && product.AvailablePieces > 0,
+                    'badge-info': product.AvailablePieces >=  6}">
+
+                        {{product.ProductId}}
+                    </span>
+                    <img class="card-img-top" [src]="product.ProductImg" alt="Card image cap">
+
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between">
+                            {{product.ProductName}}
+                            <span class="price">
+                                {{product.ProductPrice}}
+                            </span>
+                        </h5>
+                        <p class="card-text d-flex justify-content-between">
+                            AvailablePieces
+                            <span class="AvailablePieces">
+                                {{product.AvailablePieces}}
+                            </span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
