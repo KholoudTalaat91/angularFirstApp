@@ -1,0 +1,43 @@
+<div class="ordersContainer">
+    <div class="container">
+        <h2 class="title mb-3 text-capitalize">orders</h2>
+        <div id="accordion">
+            <div class="card mb-4" *ngFor="let order of orders; index as i">
+                <div class="card-header" [id]="test('heading',i)">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link w-100 d-flex justify-content-between text-info"
+                            data-toggle="collapse" [attr.data-target]="test('#collapse',i)"
+                            [attr.aria-expanded]="i==0 ? true : false" [attr.aria-controls]="test('collapse',i)">
+                            <span>Order ID:{{order.OrderId}}</span> <span
+                                class="text-uppercase">{{order.PaymentType}}</span>
+                        </button>
+                    </h5>
+                </div>
+                <div [id]="test('collapse',i)" class="collapse" [ngClass]="{'show': i == 0 }"
+                    [attr.aria-labelledby]="test('heading',i)" data-parent="#accordion">
+                    <div class="card-body">
+                        <h6>User ID {{ order.UserId }} </h6>
+                        <p>Date: {{ order.OrderDate }} </p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product ID</th>
+                                        <th scope="col">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of order.Products">
+                                        <th scope="row"> #{{ product.ProductId }} </th>
+                                        <td> {{ product.Quantity }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button type="button" class="btn btn-info btn-block text-capitalize">view order details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

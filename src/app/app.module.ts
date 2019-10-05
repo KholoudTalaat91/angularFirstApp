@@ -9,14 +9,21 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ProductsComponent } from "./components/products/products.component";
 import { HeaderComponent } from "./components/header/header.component";
+import { OrdersComponent } from "./components/orders/orders.component";
 
 // services
-import { ProductsService } from "./services/products.service";
+import { ProductsService } from "./services/products/products.service";
+import { OrdersService } from "./services/orders/orders.service";
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    HeaderComponent,
+    OrdersComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [ProductsService],
+  providers: [ProductsService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
