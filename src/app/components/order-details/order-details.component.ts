@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { forkJoin } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+
 // models
 import { User } from "../../models/User";
 import { Order } from "../../models/Order";
@@ -19,14 +21,19 @@ export class OrderDetailsComponent implements OnInit {
   orders: Order[];
   user: User;
   order: Order;
-
+  id: string;
   // methods
   constructor(
+    private route: ActivatedRoute,
     private usersService: UsersService,
     private ordersService: OrdersService
   ) {}
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log("id");
+    console.log(id);
+    
     forkJoin(
       this.usersService.getUsers(),
       this.ordersService.getOrders()
@@ -36,9 +43,12 @@ export class OrderDetailsComponent implements OnInit {
       console.log("orders");
       console.log(orders);
 
-      this.user = users[0];
-      this.order = orders[0];
-      console.log('this.user');
+      let userIndex  = users.findIndex(e => e.Id==id);
+      let OrderIndex = orders.findIndex(e => e.UserId==id);
+      this.order = orders[OrderIndex];
+      this.user = users[userIndex];
+      
+      console.log("this.user");
       console.log(this.user);
       console.log("this.order");
       console.log(this.order);

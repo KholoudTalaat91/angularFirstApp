@@ -15,6 +15,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 // services
 import { ProductsService } from "./services/products/products.service";
 import { OrdersService } from "./services/orders/orders.service";
+import { UsersService } from "./services/users/users.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { OrdersService } from "./services/orders/orders.service";
     OrderDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [ProductsService, OrdersService],
+  providers: [ProductsService, OrdersService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
