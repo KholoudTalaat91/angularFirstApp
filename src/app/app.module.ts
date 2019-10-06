@@ -10,6 +10,7 @@ import { AppComponent } from "./app.component";
 import { ProductsComponent } from "./components/products/products.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { OrdersComponent } from "./components/orders/orders.component";
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 // services
 import { ProductsService } from "./services/products/products.service";
@@ -20,7 +21,8 @@ import { OrdersService } from "./services/orders/orders.service";
     AppComponent,
     ProductsComponent,
     HeaderComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [ProductsService, OrdersService],

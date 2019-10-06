@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+
 // models
-import { Product } from "../../models/Product";
+import { User } from "../../models/User";
 
 @Injectable({
   providedIn: "root"
 })
-export class ProductsService {
+export class UsersService {
   // Properties
-  productsUrl: string = "http://jsonstub.com/products";
+  usersUrl: string = "http://jsonstub.com/users";
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -22,8 +23,8 @@ export class ProductsService {
   // methods
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    console.log("getProducts");
-    return this.http.get<Product[]>(this.productsUrl, this.httpOptions);
+  getUsers(): Observable<User[]> {
+    console.log("getUsers");
+    return this.http.get<User[]>(this.usersUrl, this.httpOptions);
   }
 }

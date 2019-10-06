@@ -9,7 +9,6 @@ import { Order } from "../../models/Order";
 })
 export class OrdersService {
   // Properties
-  orders: Order[];
   ordersUrl: string = "http://jsonstub.com/orders";
   httpOptions = {
     headers: new HttpHeaders({
