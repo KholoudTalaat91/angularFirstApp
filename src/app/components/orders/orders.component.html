@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h6>User ID {{ order.UserId }} </h6>
                         <p>Date: {{ order.OrderDate }} </p>
-                        <div class="table-responsive">
+                        <div class="table-responsive" *ngIf="order.Products">
                             <table class="table">
                                 <thead>
                                     <tr>

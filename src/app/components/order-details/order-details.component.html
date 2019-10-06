@@ -1,1 +1,42 @@
-<p>order-details works!</p>
+<div class="orderDetailsContainer">
+    <div class="container">
+        <h2 class="title mb-3 text-capitalize">order details</h2>
+        <div class="card">
+            <div class="card-body">
+                <div *ngIf="user">
+                    <h5 class="card-title"> {{ user.Name }} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> #{{ user.Id }} </h6>
+                    <p class="card-text "> <span class="font-weight-bold">Email:</span> {{ user.Email }} </p>
+                    <p class="card-text "> <span class="font-weight-bold">Phone:</span> {{ user.Phone }} </p>
+                    <p class="card-text "> <span class="font-weight-bold">Address:</span> {{ user.Address }} </p>
+                    <p class="card-text "> <span class="font-weight-bold">Register Date:</span> {{ user.RegisterDate }}
+                    </p>
+                </div>
+                <hr />
+                <div *ngIf="order">
+                    <h5 class="card-title"> #{{ order.OrderId }} - {{ order.PaymentType }} </h5>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted"> Order Date: {{ order.OrderDate }} </h6> -->
+                    <p class="card-text"> <span class="font-weight-bold">Order Date:</span> {{ order.OrderDate }}</p>
+                </div>
+                <!-- <hr /> -->
+                <div class="table-responsive mt-3" *ngIf="order && order.Products && order.Products.length > 0">
+                    <!-- <p class="card-text"> <span class="font-weight-bold text-capitalize">requested products</span></p> -->
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of order.Products">
+                                <th scope="row"> #{{ product.ProductId }} </th>
+                                <td> {{ product.Quantity }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
